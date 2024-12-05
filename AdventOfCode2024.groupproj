@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1772C1DE-DDD4-47F8-AE40-94EB1AEF1B38}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AdventOfCode2024.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AdventOfCode2024">
+        <MSBuild Projects="AdventOfCode2024.dproj"/>
+    </Target>
+    <Target Name="AdventOfCode2024:Clean">
+        <MSBuild Projects="AdventOfCode2024.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AdventOfCode2024:Make">
+        <MSBuild Projects="AdventOfCode2024.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AdventOfCode2024"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AdventOfCode2024:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AdventOfCode2024:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
