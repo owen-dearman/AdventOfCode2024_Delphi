@@ -3,7 +3,10 @@
         <ProjectGuid>{1772C1DE-DDD4-47F8-AE40-94EB1AEF1B38}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="AdventOfCode2024.dproj">
+        <Projects Include="Day 1\src\Day1_HistorianHysteria.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Day 2\src\Day2_RedNosedReports.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="AdventOfCode2024">
-        <MSBuild Projects="AdventOfCode2024.dproj"/>
+    <Target Name="Day1_HistorianHysteria">
+        <MSBuild Projects="Day 1\src\Day1_HistorianHysteria.dproj"/>
     </Target>
-    <Target Name="AdventOfCode2024:Clean">
-        <MSBuild Projects="AdventOfCode2024.dproj" Targets="Clean"/>
+    <Target Name="Day1_HistorianHysteria:Clean">
+        <MSBuild Projects="Day 1\src\Day1_HistorianHysteria.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="AdventOfCode2024:Make">
-        <MSBuild Projects="AdventOfCode2024.dproj" Targets="Make"/>
+    <Target Name="Day1_HistorianHysteria:Make">
+        <MSBuild Projects="Day 1\src\Day1_HistorianHysteria.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Day2_RedNosedReports">
+        <MSBuild Projects="Day 2\src\Day2_RedNosedReports.dproj"/>
+    </Target>
+    <Target Name="Day2_RedNosedReports:Clean">
+        <MSBuild Projects="Day 2\src\Day2_RedNosedReports.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Day2_RedNosedReports:Make">
+        <MSBuild Projects="Day 2\src\Day2_RedNosedReports.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="AdventOfCode2024"/>
+        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AdventOfCode2024:Clean"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AdventOfCode2024:Make"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

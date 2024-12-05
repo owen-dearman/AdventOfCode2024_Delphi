@@ -1,35 +1,37 @@
-program Day1_HistorianHysteria;
+program Day2_RedNosedReports;
 
 {$APPTYPE CONSOLE}
 
 {$R *.res}
+
 uses
   System.SysUtils,
   IOUtils,
-  Generics.Collections,
   Common in '..\..\Common\Common.pas',
+  Classes,
   Utils in 'Utils.pas';
 
 begin
   try
     var EXPECTED_OUTPUT_PART_ONE := 0;
     var EXPECTED_OUTPUT_PART_TWO := 0;
-    var listDistance := 0;
-    var listSimilarity := 0;
+    var numSafeLevels := 0;
+    var dampNumSafeLevels := 0;
 
     var inputDir := GetCurrentDir + '\inputs\';
     WriteLn('Input Dir: ' + inputDir);
+
     var expectedDir :=  GetCurrentDir + '\correct\';
     WriteLn('Expected Dir: ' + expectedDir);
 
     var testFiles := TDirectory.GetFiles(inputDir, '*.txt');
     var testNum := 1;
-    var listOne := TList<Integer>.Create;
-    var listTwo := TList<Integer>.Create;
+    var levels := TStringList.Create;
     try
       for var testFile in testFiles do
       begin
-       //Get expected ouputs - assumes answer file has same name as input file
+
+        //Get expected ouputs - assumes answer file has same name as input file
         var expectedOutputFileName := TPath.Combine(expectedDir, ExtractFilename(testFile));
         var expectedOutputs: string;
         if TryLoadFile(expectedOutputFileName, {o}expectedOutputs) then
@@ -40,33 +42,27 @@ begin
         end;
         //////////////////////////////////////////////////
 
-
-        WriteLn(sLineBreak + Format('Test %d: Input File: %s; Answer File: %s', [testNum, testFile, expectedOutputFileName]));
+        WriteLn(sLineBreak + Format('Test %d: Input File: %s, Answer File: %s', [testNum, testFile, expectedOutputFileName]));
         var fileContents: string;
-        if TryLoadFile(testFile, {o}fileContents) and TryProcessFileDataIntoTwoLists(fileContents, listOne, listTwo) then
+        if TryLoadFile(testFile, {o}fileContents) and TryProcessInputIntoLevels(fileContents, levels) then
         begin
-          //sort smallest to largest
-          listOne.Sort;
-          listTwo.Sort;
+//          WriteLn(sLineBreak + 'Part 1: Without dampening');
+          CalculateNumberSafeLevels(levels, {dampen}False, numSafeLevels);
 
-          //calcualte "distance" between lists
-          listDistance := CalculateDistanceBetweenLists(listOne, listTwo);
-
-          //calculate similarity
-          listSimilarity := CalculateSimilarityBetweenLists(listOne, listTwo);
+//          WriteLn(sLineBreak + 'Part 2: With dampening');
+          CalculateNumberSafeLevels(levels, {dampen}True, dampNumSafeLevels);
         end;
 
-        CheckResult(listDistance, EXPECTED_OUTPUT_PART_ONE, 'Distance between lists');
-        CheckResult(listSimilarity, EXPECTED_OUTPUT_PART_TWO, 'Similarity between lists');
+        CheckResult(numSafeLevels, EXPECTED_OUTPUT_PART_ONE, 'Part 1: Number of raw safe levels');
+        CheckResult(dampNumSafeLevels, EXPECTED_OUTPUT_PART_TWO, 'Part 2: Number of safe levels including dampened ones');
 
-        Inc(testNum);
-        listOne.Clear;
-        listTwo.Clear;
+        levels.Clear;
       end;
+
     finally
-      listOne.Free;
-      listTwo.Free;
+      levels.Free;
     end;
+
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
