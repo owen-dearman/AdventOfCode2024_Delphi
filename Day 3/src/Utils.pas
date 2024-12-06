@@ -15,7 +15,7 @@ end;
 procedure ProcessDataIntoMulList(aText: string; aList: TList<TMulRecord>);
 function CalculateMultiplicationsAndReturnSum(aList: TList<TMulRecord>; aDisableList, aEnableList: TList<Integer>): Integer;
 function CalculateMultiplicationsAndReturnSumNoSwitches(aList: TList<TMulRecord>): Integer;
-procedure GetIndexesOfSwitches(aText: string; aDisableList, aEnableList: TList<Integer>);
+procedure PopulateIndexesOfSwitches(aText: string; aDisableList, aEnableList: TList<Integer>);
 
 implementation
 
@@ -93,7 +93,7 @@ begin
   Result := CalculateMultiplicationsAndReturnSum(aList, nil, nil);
 end;
 
-procedure GetIndexesOfSwitches(aText: string; aDisableList, aEnableList: TList<Integer>);
+procedure PopulateIndexesOfSwitches(aText: string; aDisableList, aEnableList: TList<Integer>);
 begin
   var disabledMatches := TRegex.Matches(aText, 'don''t\(\)');
   for var match in disabledMatches do
