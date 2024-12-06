@@ -9,6 +9,12 @@
         <Projects Include="Day 2\src\Day2_RedNosedReports.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Day 3\src\Day3_MullItOver.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Day 4\src\Day4_CeresSearch.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +41,32 @@
     <Target Name="Day2_RedNosedReports:Make">
         <MSBuild Projects="Day 2\src\Day2_RedNosedReports.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Day3_MullItOver">
+        <MSBuild Projects="Day 3\src\Day3_MullItOver.dproj"/>
+    </Target>
+    <Target Name="Day3_MullItOver:Clean">
+        <MSBuild Projects="Day 3\src\Day3_MullItOver.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Day3_MullItOver:Make">
+        <MSBuild Projects="Day 3\src\Day3_MullItOver.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Day4_CeresSearch">
+        <MSBuild Projects="Day 4\src\Day4_CeresSearch.dproj"/>
+    </Target>
+    <Target Name="Day4_CeresSearch:Clean">
+        <MSBuild Projects="Day 4\src\Day4_CeresSearch.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Day4_CeresSearch:Make">
+        <MSBuild Projects="Day 4\src\Day4_CeresSearch.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports"/>
+        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports;Day3_MullItOver;Day4_CeresSearch"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean;Day3_MullItOver:Clean;Day4_CeresSearch:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make;Day3_MullItOver:Make;Day4_CeresSearch:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
