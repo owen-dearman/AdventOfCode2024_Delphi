@@ -92,6 +92,7 @@
         </DelphiCompile>
         <DCCReference Include="Utils.pas"/>
         <DCCReference Include="..\..\Common\Common.pas"/>
+        <DCCReference Include="..\..\Common\MatrixUnit.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -133,7 +134,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\Day4_CeresSearch.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\Day4_CeresSearch.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Day4_CeresSearch.exe</RemoteName>
                         <Overwrite>true</Overwrite>

@@ -2,39 +2,15 @@ unit Utils;
 
 interface
 
-type
-TMatrix = TArray<TArray<string>>;
+uses MatrixUnit;
 
-procedure ProcessFileDataIntoMatrix(aContents: string; out aMatrix: TMatrix; out rowCount, colCount: Integer);
+type TDirection = (up, down, left, right, diagUpLeft, diagUpRight, diagDownLeft, diagDownRight);
 procedure GetCountOfXMAS(aMatrix: TMatrix; out aXmasCount, aX_masCount: Integer);
+const theWord = 'XMAS';
 
 implementation
 
 uses SysUtils;
-
-const theWord = 'XMAS';
-
-type TDirection = (up, down, left, right, diagUpLeft, diagUpRight, diagDownLeft, diagDownRight);
-
-procedure ProcessFileDataIntoMatrix(aContents: string; out aMatrix: TMatrix; out rowCount, colCount: Integer);
-begin
-  aMatrix := [];
-  var rows := aContents.Split([#$D#$A]);
-
-  for var row in rows do
-  begin
-    var cols: TArray<string> := [];
-    for var char in row do
-      cols := cols + [char];
-    aMatrix := aMatrix + [cols];
-  end;
-
-  rowCount := Length(rows);
-  if rowCount > 0 then
-    colCount := Length(aMatrix[0])
-  else
-    colCount := 0;
-end;
 
 procedure AdjustMatrixCell(var aRow, aCol: Integer; const aOffset: Integer; const aDirection: TDirection);
 begin

@@ -8,7 +8,8 @@ uses
   System.SysUtils,
   Utils in 'Utils.pas',
   Common in '..\..\Common\Common.pas',
-  IOUtils;
+  IOUtils,
+  MatrixUnit in '..\..\Common\MatrixUnit.pas';
 
 begin
   try

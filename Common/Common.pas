@@ -3,7 +3,6 @@ unit Common;
 interface
 uses
   Generics.Collections;
-
 procedure GetDirectories(out aInputDir, aResultDir: string);
 function TryLoadExpectedOutputs(aFilename, aResultDir: string; out aAnswer1, aAnswer2: Integer): Boolean;
 function TryLoadFile(aFilename: string; out aContents: string): Boolean;
