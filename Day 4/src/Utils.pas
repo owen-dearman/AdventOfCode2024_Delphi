@@ -56,10 +56,6 @@ end;
 procedure FindAllXmasAtPoint(const aWordToFind: string; aX, aY: Integer; var aTotal: Integer; aMatrix: TMatrix);
 begin
   var currentTotal := aTotal;
-  var rowUpBounds := 0;
-  var rowDownBounds := Length(aMatrix) - 1;
-  var colLeftBounds := 0;
-  var colRightBounds := Length(aMatrix[0]) - 1;
 
   for var i := 0 to 7 do  //for each direction
   begin
@@ -73,7 +69,7 @@ begin
 
       AdjustMatrixCell({v}row, {v}col, {c}j, {c}dir);
 
-      if (row < rowUpBounds) or (row > rowDownBounds) or (col < colLeftBounds) or (col > colRightBounds) then
+      if not PosIsInMatrix(row, col, aMatrix) then
         Break;
       var letter := Uppercase(aMatrix[row][col]);
       if letter <> wantedLetter then
@@ -92,11 +88,6 @@ procedure FindX_masAtPoint(aX, aY: Integer; var aTotal: Integer; aMatrix: TMatri
 begin
   Assert(aMatrix[aX][aY] = 'A');
 
-  var rowUpBounds := 0;
-  var rowDownBounds := Length(aMatrix) - 1;
-  var colLeftBounds := 0;
-  var colRightBounds := Length(aMatrix[0]) - 1;
-
   //diagUpLeft, diagUpRight, diagDownLeft, diagDownRight
   var lettersFoundMatchingDir := '';
 
@@ -106,7 +97,7 @@ begin
     var col := aY;
     var dir := TDirection(i + 4); //only care about diagonals now
     AdjustMatrixCell({v}row, {v}col, {c}1, {c}dir);
-    if (row < rowUpBounds) or (row > rowDownBounds) or (col < colLeftBounds) or (col > colRightBounds) then
+    if not PosIsInMatrix(row, col, aMatrix) then
       Exit;
 
     var letter := aMatrix[row][col];
