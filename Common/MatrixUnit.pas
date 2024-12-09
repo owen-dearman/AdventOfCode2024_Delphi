@@ -1,11 +1,18 @@
 unit MatrixUnit;
 
 interface
+uses Common;
 
 type
+
 TMatrix = TArray<TArray<string>>;
+TPos = record
+  Row: Integer;
+  Col: Integer;
+end;
 
 procedure ProcessFileDataIntoMatrix(aContents: string; out aMatrix: TMatrix; out rowCount, colCount: Integer);
+function PosIsInMatrix(row, col: Integer; aMatrix: TMatrix): Boolean;
 
 implementation
 
@@ -30,7 +37,16 @@ begin
   else
     colCount := 0;
 
-  WriteLn('Row Count: ' + rowCount.ToString + '; Column Count: ' + colCount.ToString);
+  //WriteLn('Row Count: ' + rowCount.ToString + '; Column Count: ' + colCount.ToString);
+end;
+
+function PosIsInMatrix(row, col: Integer; aMatrix: TMatrix): Boolean;
+begin
+  var leftBounds := 0;
+  var rightBounds := Length(aMatrix[0]) - 1;
+  var upBounds := 0;
+  var downBounds := Length(aMatrix) - 1;
+  Result := (row >= upBounds) and (row <= downBounds) and (col >= leftBounds) and (col <= rightBounds);
 end;
 
 end.

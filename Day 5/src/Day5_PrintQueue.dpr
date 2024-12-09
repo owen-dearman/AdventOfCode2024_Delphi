@@ -29,7 +29,7 @@ begin
        try
          ProcessFileData(fileContents, rules, updates);
          CalculateSafeUpdates(rules, updates, safeUpdates, unsafeUpdates);
-         var middleNumCount := CountMiddleNumbers(safeUpdates);
+         partOneAnswer := CountMiddleNumbers(safeUpdates);
 
          //Prepare for Part 2
          updates.Clear;
@@ -39,10 +39,10 @@ begin
 
          FixUnsafeUpdates(updates, rules);
          CalculateSafeUpdates(rules, updates, safeUpdates, unsafeUpdates);
-         var middleNum2Count := CountMiddleNumbers(safeUpdates);
+         partTwoAnswer := CountMiddleNumbers(safeUpdates);
 
-         CheckResult(middleNumCount, EXPECTED_OUTPUT_PART_ONE, 'Middle Value Sum Safe Updates');
-         CheckResult(middleNum2Count, EXPECTED_OUTPUT_PART_TWO, 'Middle Value Sum Unsafe-Now-Safe Updates');
+         CheckResult(partOneAnswer, EXPECTED_OUTPUT_PART_ONE, 'Middle Value Sum Safe Updates');
+         CheckResult(partTwoAnswer, EXPECTED_OUTPUT_PART_TWO, 'Middle Value Sum Unsafe-Now-Safe Updates');
        finally
         rules.Free;
         updates.Free;

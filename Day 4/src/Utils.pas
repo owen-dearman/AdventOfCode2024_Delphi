@@ -2,9 +2,8 @@ unit Utils;
 
 interface
 
-uses MatrixUnit;
+uses MatrixUnit, Common;
 
-type TDirection = (up, down, left, right, diagUpLeft, diagUpRight, diagDownLeft, diagDownRight);
 procedure GetCountOfXMAS(aMatrix: TMatrix; out aXmasCount, aX_masCount: Integer);
 const theWord = 'XMAS';
 

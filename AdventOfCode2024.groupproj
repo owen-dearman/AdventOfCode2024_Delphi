@@ -15,6 +15,12 @@
         <Projects Include="Day 4\src\Day4_CeresSearch.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Day 5\src\Day5_PrintQueue.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Day 6\src\Day6_GuardGallivant.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +65,32 @@
     <Target Name="Day4_CeresSearch:Make">
         <MSBuild Projects="Day 4\src\Day4_CeresSearch.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Day5_PrintQueue">
+        <MSBuild Projects="Day 5\src\Day5_PrintQueue.dproj"/>
+    </Target>
+    <Target Name="Day5_PrintQueue:Clean">
+        <MSBuild Projects="Day 5\src\Day5_PrintQueue.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Day5_PrintQueue:Make">
+        <MSBuild Projects="Day 5\src\Day5_PrintQueue.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Day6_GuardGallivant">
+        <MSBuild Projects="Day 6\src\Day6_GuardGallivant.dproj"/>
+    </Target>
+    <Target Name="Day6_GuardGallivant:Clean">
+        <MSBuild Projects="Day 6\src\Day6_GuardGallivant.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Day6_GuardGallivant:Make">
+        <MSBuild Projects="Day 6\src\Day6_GuardGallivant.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports;Day3_MullItOver;Day4_CeresSearch"/>
+        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports;Day3_MullItOver;Day4_CeresSearch;Day5_PrintQueue;Day6_GuardGallivant"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean;Day3_MullItOver:Clean;Day4_CeresSearch:Clean"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean;Day3_MullItOver:Clean;Day4_CeresSearch:Clean;Day5_PrintQueue:Clean;Day6_GuardGallivant:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make;Day3_MullItOver:Make;Day4_CeresSearch:Make"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make;Day3_MullItOver:Make;Day4_CeresSearch:Make;Day5_PrintQueue:Make;Day6_GuardGallivant:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
