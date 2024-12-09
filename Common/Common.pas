@@ -40,7 +40,6 @@ begin
       Result := Result + aList[i].ToString
     else
       Result := Result + aList[i].ToString + ', ';
-
   end;
 end;
 
