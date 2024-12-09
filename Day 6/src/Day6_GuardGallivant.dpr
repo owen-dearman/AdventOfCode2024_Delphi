@@ -26,18 +26,20 @@ begin
       begin
         var matrix: TMatrix;
         var rowCount, colCount: Integer;
-        var visitedCells := TList<TPos>.Create;
         var _numLoops: Integer;
-        ProcessFileDataIntoMatrix(fileContents, {o}matrix, {o}rowCount, {o}colCount);
-        ProcessMatrixPath(matrix, visitedCells, {v}_numLoops, {o}partOneAnswer);
+        var visitedCells := TList<TPos>.Create;
+        try
+          ProcessFileDataIntoMatrix(fileContents, {o}matrix, {o}rowCount, {o}colCount);
+          ProcessMatrixPath(matrix, visitedCells, {v}_numLoops, {o}partOneAnswer);
 
-        //Part 2
-        var matrix2: TMatrix;
-        ProcessFileDataIntoMatrix(fileContents, {o}matrix2, {o}rowCount, {o}colCount);
-        AddBlockerAndTest(matrix2, fileContents, visitedCells, {o}partTwoAnswer);
+          //Part 2
+          AddBlockerAndTest(fileContents, visitedCells, {o}partTwoAnswer);
 
-        CheckResult(partOneAnswer, EXPECTED_OUTPUT_PART_ONE, 'Number distinct locations reached by guard');
-        CheckResult(partTwoAnswer, EXPECTED_OUTPUT_PART_TWO, 'Number of possible loop inducing locations');
+          CheckResult(partOneAnswer, EXPECTED_OUTPUT_PART_ONE, 'Number distinct locations reached by guard');
+          CheckResult(partTwoAnswer, EXPECTED_OUTPUT_PART_TWO, 'Number of possible loop inducing locations');
+        finally
+          visitedCells.Free;
+        end;
       end;
     end;
   except

@@ -10,7 +10,7 @@ const OBSTACLE_MARKER = '#';
 const CELL_UNVISITED_MARKER = '.';
 
 procedure ProcessMatrixPath(aMatrix: TMatrix; aVisitedCells: TList<TPos>; var aNumLoops: Integer; out aCountOfDistinctLocations: Integer);
-procedure AddBlockerAndTest(aMatrix: TMatrix; aFileContents: string; aVisitedCells: TList<TPos>; out aNumLoops: Integer);
+procedure AddBlockerAndTest(aFileContents: string; aVisitedCells: TList<TPos>; out aNumLoops: Integer);
 
 implementation
 
@@ -177,7 +177,7 @@ begin
   end;
 end;
 
-procedure AddBlockerAndTest(aMatrix: TMatrix; aFileContents: string; aVisitedCells: TList<TPos>; out aNumLoops: Integer);
+procedure AddBlockerAndTest(aFileContents: string; aVisitedCells: TList<TPos>; out aNumLoops: Integer);
 begin
   var _count: Integer;
   var rowCount, colCount: Integer;
