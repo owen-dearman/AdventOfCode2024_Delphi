@@ -69,9 +69,11 @@ end;
 
 function TryLoadExpectedOutputs(aFilename, aResultDir: string; out aAnswer1, aAnswer2: Integer): Boolean;
 begin
-  TryLoadExpectedOutputs(aFilename, aResultDir, aAnswer1, aAnswer2);
-  aAnswer1 := Integer(aAnswer1);
-  aAnswer2 := Integer(aAnswer2);
+  var ans1: Int64;
+  var ans2: Int64;
+  Result := TryLoadExpectedOutputs(aFilename, aResultDir, ans1, ans2);
+  aAnswer1 := Integer(ans1);
+  aAnswer2 := Integer(ans2);
 end;
 
 function TryLoadExpectedOutputs(aFilename, aResultDir: string; out aAnswer1, aAnswer2: Int64): Boolean; overload;
