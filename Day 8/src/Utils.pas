@@ -41,19 +41,20 @@ end;
 
 procedure FindPositionsOfAntinodes(aMatrix: TMatrix; aAntDict: TDictionary<string, TArray<TPoint>>; aAntinodes: TList<TPoint>; aUseResonantFreq: Boolean);
 begin
-  for var ant in aAntDict do
-    for var i := 0 to High(ant.Value) do
-      for var j := 0 to High(ant.Value) do
+  for var ant in aAntDict.Keys do
+    for var i := 0 to High(aAntDict[ant]) do
+      for var j := 0 to High(aAntDict[ant]) do
       begin
-        var diff := ant.Value[i].Diff(ant.Value[j]);
-        if (diff.Y = 0) and (diff.X = 0) then Continue;
+        if i = j then Continue;
 
-        TryFindProjections(aMatrix, ant.Value[i], ant.Value[j], diff, aAntinodes, aUseResonantFreq);
-        if not aUseResonantFreq then
-            Continue;
+        var currentAntenna := aAntDict[ant][i];
+        var otherAntenna := aAntDict[ant][j];
 
-        //Also have to look "inwards" from each antenna when finding resonant frequencies
-        TryFindProjections(aMatrix, ant.Value[i], ant.Value[j], TPoint.Create(diff.Y * -1, diff.X * -1), aAntinodes, True);
+        //Also have to look "inwards" from each antenna when finding resonant frequencies. However, since we're using the distance between antennae, looking inwards will only encapsulate the j antenna
+        if aUseResonantFreq and (not aAntinodes.Contains(currentAntenna)) then
+          aAntinodes.Add(currentAntenna);
+
+        TryFindProjections(aMatrix, currentAntenna, otherAntenna, currentAntenna.Diff(otherAntenna), aAntinodes, aUseResonantFreq);
       end;
 end;
 
