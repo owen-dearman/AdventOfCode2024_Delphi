@@ -9,8 +9,8 @@ const CELL_VISITED_MARKER = 'X';
 const OBSTACLE_MARKER = '#';
 const CELL_UNVISITED_MARKER = '.';
 
-procedure ProcessMatrixPath(aMatrix: TMatrix; aVisitedCells: TList<TPos>; var aNumLoops: Integer; out aCountOfDistinctLocations: Integer);
-procedure AddBlockerAndTest(aFileContents: string; aVisitedCells: TList<TPos>; out aNumLoops: Integer);
+procedure ProcessMatrixPath(aMatrix: TMatrix; aVisitedCells: TList<TPoint>; var aNumLoops: Integer; out aCountOfDistinctLocations: Integer);
+procedure AddBlockerAndTest(aFileContents: string; aVisitedCells: TList<TPoint>; out aNumLoops: Integer);
 
 implementation
 
@@ -114,7 +114,7 @@ begin
   end;
 end;
 
-procedure ProcessMatrixPath(aMatrix: TMatrix; aVisitedCells: TList<TPos>; var aNumLoops: Integer; out aCountOfDistinctLocations: Integer);
+procedure ProcessMatrixPath(aMatrix: TMatrix; aVisitedCells: TList<TPoint>; var aNumLoops: Integer; out aCountOfDistinctLocations: Integer);
 begin
   aCountOfDistinctLocations := 0;
   var row, col: Integer;
@@ -136,12 +136,8 @@ begin
       //number of time stepped on is 0 as we'll increment it later
       aMatrix[row][col] := '0';
       if aVisitedCells <> nil then
-      begin
-        var pos: TPos;
-        pos.Row := row;
-        pos.Col := col;
-        aVisitedCells.Add(pos);
-      end;
+        aVisitedCells.Add(TPoint.Create(row, col));
+
     end;
 
     //For multiple visits to same spot
@@ -177,7 +173,7 @@ begin
   end;
 end;
 
-procedure AddBlockerAndTest(aFileContents: string; aVisitedCells: TList<TPos>; out aNumLoops: Integer);
+procedure AddBlockerAndTest(aFileContents: string; aVisitedCells: TList<TPoint>; out aNumLoops: Integer);
 begin
   var _count: Integer;
   var rowCount, colCount: Integer;
@@ -187,10 +183,10 @@ begin
   begin
     var testMatrix: TMatrix;
     ProcessFileDataIntoMatrix(aFileContents, testMatrix, rowCount, colCount); //Reset the matrix
-    if testMatrix[cell.Row][cell.Col] <> CELL_UNVISITED_MARKER then //Can't place obstacle where guard starts
+    if testMatrix[cell.Y][cell.X] <> CELL_UNVISITED_MARKER then //Can't place obstacle where guard starts
         Continue;
 
-    testMatrix[cell.Row][cell.Col] := OBSTACLE_MARKER;  //Set the obstacle
+    testMatrix[cell.Y][cell.X] := OBSTACLE_MARKER;  //Set the obstacle
     ProcessMatrixPath(testMatrix, nil, {v}aNumLoops, {o}_count);
   end;
 end;

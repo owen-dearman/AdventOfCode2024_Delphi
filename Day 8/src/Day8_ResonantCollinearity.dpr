@@ -1,4 +1,4 @@
-program Day6_GuardGallivant;
+program Day8_ResonantCollinearity;
 
 {$APPTYPE CONSOLE}
 
@@ -7,10 +7,11 @@ program Day6_GuardGallivant;
 uses
   System.SysUtils,
   Common in '..\..\Common\Common.pas',
-  Utils in 'Utils.pas',
-  IOUtils,
   MatrixUnit in '..\..\Common\MatrixUnit.pas',
-  Generics.Collections;
+  Utils in 'Utils.pas',
+  IOUtils, Generics.Collections;
+
+
 
 begin
   try
@@ -26,20 +27,17 @@ begin
       begin
         var matrix: TMatrix;
         var rowCount, colCount: Integer;
-        var _numLoops: Integer;
-        var visitedCells := TList<TPoint>.Create;
-        try
-          ProcessFileDataIntoMatrix(fileContents, {o}matrix, {o}rowCount, {o}colCount);
-          ProcessMatrixPath(matrix, visitedCells, {v}_numLoops, {o}partOneAnswer);
+        ProcessFileDataIntoMatrix(fileContents, {o}matrix, {o}rowCount, {o}colCount);
 
-          //Part 2
-          AddBlockerAndTest(fileContents, visitedCells, {o}partTwoAnswer);
+        partOneAnswer := CountAntinodes(matrix, False);
+        CheckResult(partOneAnswer, EXPECTED_OUTPUT_PART_ONE, 'Number of antinode positions');
 
-          CheckResult(partOneAnswer, EXPECTED_OUTPUT_PART_ONE, 'Number distinct locations reached by guard');
-          CheckResult(partTwoAnswer, EXPECTED_OUTPUT_PART_TWO, 'Number of possible loop inducing locations');
-        finally
-          visitedCells.Free;
-        end;
+         WriteLn;
+
+        partTwoAnswer := CountAntinodes(matrix, True);
+        CheckResult(partTwoAnswer, EXPECTED_OUTPUT_PART_TWO, 'Number of antinode positions including resonant frequencies');
+
+        WriteLn;
       end;
     end;
   except

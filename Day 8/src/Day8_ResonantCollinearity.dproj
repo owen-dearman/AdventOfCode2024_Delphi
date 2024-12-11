@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{5DF6223C-EB24-45F2-A20F-B8FDCDAF6881}</ProjectGuid>
+        <ProjectGuid>{44571706-BA16-4852-B599-ACAE66CC1137}</ProjectGuid>
         <ProjectVersion>19.4</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
@@ -8,7 +8,7 @@
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Console</AppType>
-        <MainSource>Day6_GuardGallivant.dpr</MainSource>
+        <MainSource>Day8_ResonantCollinearity.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -46,7 +46,7 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <SanitizedProjectName>Day6_GuardGallivant</SanitizedProjectName>
+        <SanitizedProjectName>Day8_ResonantCollinearity</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>FireDACIBDriver;vclwinx;fmx;DbxCommonDriver;vclie;bindengine;IndyIPCommon;FireDACCommonODBC;VCLRESTComponents;FireDACCommonDriver;appanalytics;IndyProtocols;vclx;dbxcds;vcledge;IndyIPClient;bindcompvclwinx;FmxTeeUI;bindcompfmx;JvBands;inetdb;JvAppFrm;FireDACSqliteDriver;DbxClientDriver;Tee;soapmidas;JclVcl;vclactnband;TeeUI;fmxFireDAC;dbexpress;Jcl;JvManagedThreads;DBXMySQLDriver;VclSmp;inet;JvPascalInterpreter;fmxase;vcltouch;JvPluginSystem;JvDB;JvTimeFramework;dbrtl;fmxdae;TeeDB;FireDACMSAccDriver;JvCustom;CustomIPTransport;JvSystem;JclDeveloperTools;JvControls;vcldsnap;JvCrypt;DBXInterBaseDriver;JvJans;JvMM;IndySystem;JvWizards;JvGlobus;vcldb;JclContainers;JvPageComps;vclFireDAC;JvCore;bindcomp;FireDACCommon;IndyCore;RESTBackendComponents;bindcompdbx;rtl;FireDACMySQLDriver;FireDACADSDriver;BellvediComponentsXE;RESTComponents;DBXSqliteDriver;vcl;adortl;dsnapxml;IndyIPServer;dsnapcon;JvDotNetCtrls;JvHMI;JvRuntimeDesign;JvXPCtrls;vclimg;FireDACPgDriver;FireDAC;inetdbxpress;JvDlgs;xmlrtl;tethering;JvStdCtrls;JvDocking;JvPrintPreview;bindcompvcl;dsnap;JvCmp;CloudService;fmxobj;bindcompvclsmp;FMXTee;soaprtl;soapserver;JvNet;$(DCC_UsePackage)</DCC_UsePackage>
@@ -91,8 +91,8 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="..\..\Common\Common.pas"/>
-        <DCCReference Include="Utils.pas"/>
         <DCCReference Include="..\..\Common\MatrixUnit.pas"/>
+        <DCCReference Include="Utils.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -111,7 +111,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">Day6_GuardGallivant.dpr</Source>
+                    <Source Name="MainSource">Day8_ResonantCollinearity.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -134,9 +134,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\Day6_GuardGallivant.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\Day8_ResonantCollinearity.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>Day6_GuardGallivant.exe</RemoteName>
+                        <RemoteName>Day8_ResonantCollinearity.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
