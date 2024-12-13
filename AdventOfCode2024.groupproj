@@ -27,6 +27,9 @@
         <Projects Include="Day 8\src\Day8_ResonantCollinearity.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Day 9\src\Day9_DiskFragmenter.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -107,14 +110,23 @@
     <Target Name="Day8_ResonantCollinearity:Make">
         <MSBuild Projects="Day 8\src\Day8_ResonantCollinearity.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Day9_DiskFragmenter">
+        <MSBuild Projects="Day 9\src\Day9_DiskFragmenter.dproj"/>
+    </Target>
+    <Target Name="Day9_DiskFragmenter:Clean">
+        <MSBuild Projects="Day 9\src\Day9_DiskFragmenter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Day9_DiskFragmenter:Make">
+        <MSBuild Projects="Day 9\src\Day9_DiskFragmenter.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports;Day3_MullItOver;Day4_CeresSearch;Day5_PrintQueue;Day6_GuardGallivant;Day7_BridgeRepair;Day8_ResonantCollinearity"/>
+        <CallTarget Targets="Day1_HistorianHysteria;Day2_RedNosedReports;Day3_MullItOver;Day4_CeresSearch;Day5_PrintQueue;Day6_GuardGallivant;Day7_BridgeRepair;Day8_ResonantCollinearity;Day9_DiskFragmenter"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean;Day3_MullItOver:Clean;Day4_CeresSearch:Clean;Day5_PrintQueue:Clean;Day6_GuardGallivant:Clean;Day7_BridgeRepair:Clean;Day8_ResonantCollinearity:Clean"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Clean;Day2_RedNosedReports:Clean;Day3_MullItOver:Clean;Day4_CeresSearch:Clean;Day5_PrintQueue:Clean;Day6_GuardGallivant:Clean;Day7_BridgeRepair:Clean;Day8_ResonantCollinearity:Clean;Day9_DiskFragmenter:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make;Day3_MullItOver:Make;Day4_CeresSearch:Make;Day5_PrintQueue:Make;Day6_GuardGallivant:Make;Day7_BridgeRepair:Make;Day8_ResonantCollinearity:Make"/>
+        <CallTarget Targets="Day1_HistorianHysteria:Make;Day2_RedNosedReports:Make;Day3_MullItOver:Make;Day4_CeresSearch:Make;Day5_PrintQueue:Make;Day6_GuardGallivant:Make;Day7_BridgeRepair:Make;Day8_ResonantCollinearity:Make;Day9_DiskFragmenter:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
